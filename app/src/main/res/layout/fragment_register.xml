@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#09090B"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER NODE"
+        android:textColor="#10B981"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Initialize your identity parameter"
+        android:textColor="#71717A"
+        android:textSize="14sp"
+        android:layout_marginBottom="32dp"/>
+
+    <EditText
+        android:id="@+id/etRegUsername"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#121214"
+        android:hint="Username"
+        android:textColorHint="#52525B"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:inputType="text"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etRegGmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#121214"
+        android:hint="Gmail Address"
+        android:textColorHint="#52525B"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etRegPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#121214"
+        android:hint="Password"
+        android:textColorHint="#52525B"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:inputType="textPassword"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etRegPasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#121214"
+        android:hint="Re-type Password"
+        android:textColorHint="#52525B"
+        android:textColor="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:inputType="textPassword"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btnRegisterSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Initialize Cluster Account"
+        android:backgroundTint="#10B981"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already registered? Sign In"
+        android:textColor="#A1A1AA"
+        android:textSize="13sp"/>
+</LinearLayout>

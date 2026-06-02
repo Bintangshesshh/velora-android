@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt") // <-- TAMBAHKAN BARIS INI
 }
 
 android {
@@ -36,13 +37,18 @@ android {
 }
 
 dependencies {
+    // UI & Layout Modern
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.cardview:cardview:1.0.0")
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Image Loader Glide (Cukup satu baris ini saja, compiler dihapus agar tidak duplikat)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Lucide Icons / Material Icons
+    implementation("com.google.android.material:material:1.12.0")
+
+    // Core Android SDK Dependencies
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }

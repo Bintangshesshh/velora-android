@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#121214">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivGalleryImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:background="#1C1C1E"
+            android:contentDescription="Gallery Asset" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvGalleryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Asset Title"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGalleryDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description node parameter."
+                android:textColor="#A1A1AA"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"
+                android:maxLines="2" />
+
+            <TextView
+                android:id="@+id/tvGalleryCreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👤 By: Ben"
+                android:textColor="#2563EB"
+                android:textSize="10sp"
+                android:layout_marginTop="4dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tvGalleryLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="❤️ 0 Likes"
+                    android:textColor="#EF4444"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGalleryViews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="👁️ 0 Views"
+                    android:textColor="#71717A"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/btnEditAsset"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="Edit"
+                    android:textSize="10sp"
+                    android:backgroundTint="#27272A"
+                    android:textColor="#FFFFFF"
+                    android:padding="0dp"/>
+
+                <Button
+                    android:id="@+id/btnDeleteAsset"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:text="Hapus"
+                    android:textSize="10sp"
+                    android:backgroundTint="#7F1D1D"
+                    android:textColor="#FCA5A5"
+                    android:padding="0dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

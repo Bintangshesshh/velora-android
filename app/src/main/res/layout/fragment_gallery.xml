@@ -1,89 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#09090B">
+    android:background="#0A0A0A"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_margin="12dp"
-        android:background="#121214"
-        android:hint="Search ecosystem nodes..."
-        android:textColorHint="#71717A"
-        android:textColor="#FFFFFF"
-        android:paddingHorizontal="16dp"
-        android:textSize="14sp"
-        android:inputType="text"/>
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvGalleryTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:paddingHorizontal="12dp"
-        android:layout_marginBottom="8dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnFilterAll"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="All"
-                android:backgroundTint="#2563EB"
-                android:textSize="11sp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btnFilterCyber"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="Cyberpunk"
-                android:backgroundTint="#18181B"
-                android:textSize="11sp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btnFilterArch"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="Architecture"
-                android:backgroundTint="#18181B"
-                android:textSize="11sp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btnFilterAI"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="AI"
-                android:backgroundTint="#18181B"
-                android:textSize="11sp"/>
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <Button
-        android:id="@+id/btnUploadSimulasi"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="12dp"
-        android:text="+ Upload New Asset"
-        android:backgroundTint="#10B981"
-        android:textColor="#FFFFFF"
+        android:text="GALLERY"
+        android:textColor="#A855F7"
         android:textSize="12sp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBentoGallery"
+    <EditText
+        android:id="@+id/etSearchGallery"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="6dp"
-        android:clipToPadding="false"/>
-</LinearLayout>
+        android:layout_height="45dp"
+        android:layout_below="@id/tvGalleryTitle"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_input_field"
+        android:hint="Search photo shard..."
+        android:textColorHint="#52525B"
+        android:textColor="#FAFAFA"
+        android:paddingHorizontal="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGalleryGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/etSearchGallery"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"/>
+</RelativeLayout>

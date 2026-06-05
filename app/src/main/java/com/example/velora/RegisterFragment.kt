@@ -1,12 +1,12 @@
 package com.example.velora
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -18,45 +18,49 @@ class RegisterFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
-        val etUsername = view.findViewById<EditText>(R.id.etRegUsername)
-        val etGmail = view.findViewById<EditText>(R.id.etRegGmail)
-        val etPassword = view.findViewById<EditText>(R.id.etRegPassword)
-        val etPasswordConfirm = view.findViewById<EditText>(R.id.etRegPasswordConfirm)
+        val etUsername = view.findViewById<EditText>(R.id.etRegisterUsername)
+        val etGmail = view.findViewById<EditText>(R.id.etRegisterGmail)
+        val etPassword = view.findViewById<EditText>(R.id.etRegisterPassword)
+        val etConfirmPassword = view.findViewById<EditText>(R.id.etRegisterConfirmPassword)
         val btnRegisterSubmit = view.findViewById<Button>(R.id.btnRegisterSubmit)
-        val tvToLogin = view.findViewById<TextView>(R.id.tvToLogin)
+        val btnToLogin = view.findViewById<Button>(R.id.btnToLogin)
 
-        val authManager = AuthManager(requireContext())
+        // Kembali ke halaman Login
+        btnToLogin.setOnClickListener {
+            (activity as? MainActivity)?.switchFragment(LoginFragment())
+        }
 
         btnRegisterSubmit.setOnClickListener {
             val username = etUsername.text.toString().trim()
             val gmail = etGmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
-            val passwordConfirm = etPasswordConfirm.text.toString().trim()
+            val confirmPassword = etConfirmPassword.text.toString().trim()
 
-            if (username.isEmpty() || gmail.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
-                Toast.makeText(requireContext(), "Harap isi semua kolom!", Toast.LENGTH_SHORT).show()
+            // 1. Validasi Kolom Kosong
+            if (username.isEmpty() || gmail.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(requireContext(), "Harap isi semua kolom data!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (password != passwordConfirm) {
-                Toast.makeText(requireContext(), "Password ke-ulang tidak cocok!", Toast.LENGTH_SHORT).show()
+            // 2. Validasi Kecocokan Password
+            if (password != confirmPassword) {
+                Toast.makeText(requireContext(), "Password dan Ulangi Password tidak cocok!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Simpan akun ke database lokal SharedPreferences
-            authManager.saveUser(username, gmail, password)
-            Toast.makeText(requireContext(), "Registrasi Sukses! Silakan Login", Toast.LENGTH_SHORT).show()
+            // 3. Jika Semua Valid, Simpan ke SharedPreferences
+            val sharedPref = requireContext().getSharedPreferences("UserRegPref", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("registered_username", username)
+                putString("registered_gmail", gmail)
+                putString("registered_password", password)
+                apply()
+            }
 
-            // Lempar balik ke halaman login agar user bisa masuk menggunakan akun barunya
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, LoginFragment())
-                .commit()
-        }
+            Toast.makeText(requireContext(), "Registration successful! Welcome $username", Toast.LENGTH_SHORT).show()
 
-        tvToLogin.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, LoginFragment())
-                .commit()
+            // Lempar kembali ke LoginFragment setelah sukses mendaftar
+            (activity as? MainActivity)?.switchFragment(LoginFragment())
         }
 
         return view

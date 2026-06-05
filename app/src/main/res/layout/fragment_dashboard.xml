@@ -1,35 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09090B"
-    android:padding="24dp">
+    android:background="@color/bg_dark"
+    android:fillViewport="true"
+    android:padding="16dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:paddingBottom="80dp">
 
+        <!-- HEADER TITLE -->
         <TextView
-            android:id="@+id/tvWelcomeDashboard"
-            android:layout_width="match_parent"
+            android:id="@+id/tvDashHeader"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back, User!\nVelora System Operational."
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:text="System Dashboard"
+            android:textColor="@color/text_white"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:gravity="center" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-        <TextView
-            android:layout_width="match_parent"
+        <!-- BENTO BLOCK 1: USER QUICK PROFILE -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bentoProfile"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDashHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:background="@drawable/bg_glass_card">
+                <ImageView
+                    android:id="@+id/ivDashAvatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/tvDashProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivDashAvatar"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:text="Benediktus"
+                    android:textColor="@color/text_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDashProfileName"
+                    android:layout_toEndOf="@id/ivDashAvatar"
+                    android:layout_marginStart="16dp"
+                    android:text="Core Ecosystem Admin"
+                    android:textColor="@color/accent_blue"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- BENTO BLOCK 2: STATS TOTAL UPLOADS (Petak Kiri) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bentoUploads"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="6dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/bentoProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bentoLikes">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_glass_card">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TOTAL ASSETS" android:textColor="@color/text_muted" android:textSize="11sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalAssets" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="24" android:textColor="@color/text_white" android:textSize="36sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+4 Added this week" android:textColor="@color/neon_green" android:textSize="11sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- BENTO BLOCK 3: STATS TOTAL LIKES (Petak Kanan) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bentoLikes"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="6dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/bentoProfile"
+            app:layout_constraintStart_toEndOf="@id/bentoUploads"
+            app:layout_constraintEnd_toEndOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_glass_card">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TOTAL LIKES" android:textColor="@color/text_muted" android:textSize="11sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalLikes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="14.2K" android:textColor="@color/accent_purple" android:textSize="36sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Top 1% creator pool" android:textColor="@color/accent_blue" android:textSize="11sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- BENTO BLOCK 4: RECENT ACTIVITY TIMELINE -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bentoTimeline"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Use the bottom navigation to manage your ecosystem cores and gallery parameters."
-            android:textColor="#A1A1AA"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/surface_dark"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/bentoUploads"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/bg_glass_card">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SYSTEM LOG TIMELINE" android:textColor="@color/text_white" android:textSize="14sp" android:textStyle="bold" android:layout_marginBottom="12dp"/>
 
-    </LinearLayout>
-</RelativeLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="• Compiled 'Cyberpunk Station Neon' to pipeline" android:textColor="@color/text_white" android:textSize="13sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  12 mins ago via Android Studio" android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginBottom="8dp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="• Synced account profile metadata node" android:textColor="@color/text_white" android:textSize="13sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  1 hour ago via SharedPreferences" android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginBottom="8dp"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="• Authenticated security cluster" android:textColor="@color/neon_green" android:textSize="13sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  2 hours ago Session Verified" android:textColor="@color/text_muted" android:textSize="11sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

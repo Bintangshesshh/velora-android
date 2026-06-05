@@ -3,21 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09090B">
+    android:background="#0A0A0A">
 
+    <!-- Container Utama Tempat Menampilkan Fragment -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- Glassmorphism Floating Bottom Navigation Bar -->
+    <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:background="#121214"
-        app:itemIconTint="#A1A1AA"
-        app:itemTextColor="#A1A1AA"
-        app:menu="@menu/bottom_nav_menu"
-        android:visibility="gone" /> </RelativeLayout>
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_floating_navbar"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <FrameLayout android:id="@+id/btnNavDashboard" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:src="@android:drawable/ic_menu_today" app:tint="#A1A1AA"/>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/btnNavGallery" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:src="@android:drawable/ic_menu_gallery" app:tint="#A1A1AA"/>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/btnNavUpload" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:src="@android:drawable/ic_input_add" app:tint="#A1A1AA"/>
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/btnNavProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:layout_gravity="center" android:src="@android:drawable/ic_menu_myplaces" app:tint="#A1A1AA"/>
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

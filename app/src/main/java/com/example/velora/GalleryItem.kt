@@ -1,17 +1,17 @@
 package com.example.velora
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class GalleryItem(
-    val id: String,
+    val id: Int,
     val title: String,
     val description: String,
-    val category: String, // Untuk Filter Kategori
+    val category: String,
+    var likes: Int,
+    val creator: String,
+    val uploadDate: String,
     val imageUrl: String,
-    val isLiked: Boolean = false,
-    val views: Int,
-    var isFavorite: Boolean, // Harus 'var' agar status like bisa diganti-ganti
-    val creatorName: String,
-    val creatorUsername: String,
-    val avatarUrl: String,
-    val likesCount: String,
-    val spanSize: Int
-)
+    var isLiked: Boolean = false
+) : Parcelable

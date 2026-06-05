@@ -1,68 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#09090B"
+    android:background="@color/bg_dark"
     android:padding="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lumaro Gallery"
-        android:textColor="#2563EB"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="4dp"/>
+    <!-- Efek Lampu Gradasi / Ambient Glow di Background (Sudah Diperbaiki) -->
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-100dp"
+        android:background="@drawable/bg_glass_card"
+        android:alpha="0.1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connect your node to the ecosystem"
-        android:textColor="#71717A"
-        android:textSize="14sp"
-        android:layout_marginBottom="32dp"/>
-
-    <EditText
-        android:id="@+id/etLoginGmail"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#121214"
-        android:hint="Gmail Address"
-        android:textColorHint="#52525B"
-        android:textColor="#FFFFFF"
-        android:paddingHorizontal="16dp"
-        android:inputType="textEmailAddress"
-        android:layout_marginBottom="12dp"/>
-
-    <EditText
-        android:id="@+id/etLoginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="#121214"
-        android:hint="Password"
-        android:textColorHint="#52525B"
-        android:textColor="#FFFFFF"
-        android:paddingHorizontal="16dp"
-        android:inputType="textPassword"
-        android:layout_marginBottom="24dp"/>
-
-    <Button
-        android:id="@+id/btnLoginSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="Authorize Login"
-        android:backgroundTint="#2563EB"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:id="@+id/tvToRegister"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Architect? Create an account node"
-        android:textColor="#A1A1AA"
-        android:textSize="13sp"/>
-</LinearLayout>
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/bg_glass_card"
+        android:padding="24dp"
+        android:elevation="8dp">
+
+        <!-- Header Brand -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VELORA CORE"
+            android:textColor="@color/accent_blue"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back"
+            android:textColor="@color/text_white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Input Gmail -->
+        <EditText
+            android:id="@+id/etLoginGmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_glass_card"
+            android:hint="Enter your node email..."
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/text_white"
+            android:textColorHint="@color/text_muted"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Input Password -->
+        <EditText
+            android:id="@+id/etLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_glass_card"
+            android:hint="Enter secure password..."
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/text_white"
+            android:textColorHint="@color/text_muted"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Tombol Login (Solid Accent) -->
+        <Button
+            android:id="@+id/btnLoginSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Sign In To Ecosystem"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:backgroundTint="@color/accent_blue"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="12dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Tombol navigasi ke Register -->
+        <Button
+            android:id="@+id/btnToRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Create New Account Node"
+            android:textColor="@color/text_muted"
+            android:backgroundTint="@android:color/transparent"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeColor="@color/stroke_glass"
+            app:strokeWidth="1dp"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
+</RelativeLayout>
